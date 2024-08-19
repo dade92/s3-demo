@@ -28,3 +28,15 @@ resource "aws_s3_bucket_policy" "public_bucket_policy" {
     ]
   })
 }
+
+output "s3-regional-name" {
+  value = aws_s3_bucket.s3-bucket.bucket_regional_domain_name
+}
+
+output "s3-domain-name" {
+  value = aws_s3_bucket.s3-bucket.bucket_domain_name
+}
+
+output "s3-bucket" {
+  value = aws_s3_bucket.s3-bucket.bucket
+}

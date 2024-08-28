@@ -1,16 +1,32 @@
 resource "aws_dynamodb_table" "customer_table" {
-  name     = "Customer"
-  billing_mode = "PAY_PER_REQUEST"  # Use on-demand billing
-  hash_key = "ID"             # Primary key for the table
+  name         = "Customer"
+  billing_mode = "PAY_PER_REQUEST"
+  hash_key     = "ID"
+#   range_key = "username"
 
   attribute {
     name = "ID"
-    type = "S"  # 'S' for string type
+    type = "S"
   }
+
+#   attribute {
+#     name = "username"
+#     type = "S"
+#   }
+
+  #   global_secondary_index {
+  #     name            = "UsernameIndex"
+  #     hash_key        = "name"      # GSI Partition key
+  #     projection_type = "ALL"
+  #
+  #     # Provisioned throughput for GSI (not needed for on-demand mode)
+  #     read_capacity  = 5
+  #     write_capacity = 5
+  #   }
 
   tags = {
     Name        = "Customer"
-    Environment = "dev"  # Change this tag as needed
+    Environment = "dev"
   }
 }
 
